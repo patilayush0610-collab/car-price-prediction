@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Dashboard Pro</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <h1>🚗 Car Price Dashboard Pro</h1>
+
+    <form action="/predict" method="post">
+
+        <input type="number" name="year" placeholder="Car Year" required>
+
+        <input type="number" name="kms_driven" placeholder="KMs Driven" required>
+
+        <select name="company">
+            {% for c in companies %}
+            <option value="{{c}}">{{c}}</option>
+            {% endfor %}
+        </select>
+
+        <select name="name">
+            {% for n in names %}
+            <option value="{{n}}">{{n}}</option>
+            {% endfor %}
+        </select>
+
+        <select name="fuel_type">
+            {% for f in fuels %}
+            <option value="{{f}}">{{f}}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Predict Price</button>
+
+    </form>
+
+    <h2>{{ prediction_text }}</h2>
+
+</div>
+
+</body>
+</html>
